@@ -27,7 +27,7 @@
 
     <application
         android:name="${applicationName}"
-        android:label="Glover"
+        android:label="Mangoo"
         android:usesCleartextTraffic="true"
         android:requestLegacyExternalStorage="true"
         android:icon="@mipmap/launcher_icon"

@@ -75,29 +75,29 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            fab: SizedBox(
-              height: 40,
-              child: FloatingActionButton.extended(
-                backgroundColor: AppColor.primaryColorDark,
-                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                onPressed: model.openCart,
-                icon: Icon(
-                  FlutterIcons.shopping_cart_faw,
-                  color: Colors.white,
-                ).badge(
-                  position: Utils.isArabic
-                      ? VxBadgePosition.leftTop
-                      : VxBadgePosition.rightTop,
-                  count: model.totalCartItems,
-                  color: Colors.white,
-                  textStyle: context.textTheme.bodyText1?.copyWith(
-                    color: AppColor.primaryColor,
-                    fontSize: 10,
-                  ),
-                ),
-                label: "Cart".tr().text.white.make(),
-              ),
-            ),
+            // fab: SizedBox(
+            //   height: 40,
+            //   child: FloatingActionButton.extended(
+            //     backgroundColor: AppColor.primaryColorDark,
+            //     materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            //     onPressed: model.openCart,
+            //     icon: Icon(
+            //       FlutterIcons.shopping_cart_faw,
+            //       color: Colors.white,
+            //     ).badge(
+            //       position: Utils.isArabic
+            //           ? VxBadgePosition.leftTop
+            //           : VxBadgePosition.rightTop,
+            //       count: model.totalCartItems,
+            //       color: Colors.white,
+            //       textStyle: context.textTheme.bodyText1?.copyWith(
+            //         color: AppColor.primaryColor,
+            //         fontSize: 10,
+            //       ),
+            //     ),
+            //     label: "Cart".tr().text.white.make(),
+            //   ),
+            // ),
             bottomNavigationBar: VxBox(
               child: SafeArea(
                 child: GNav(

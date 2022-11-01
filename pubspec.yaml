@@ -115,6 +115,8 @@ dependencies:
   url_launcher: ^6.1.4
   velocity_x: ^3.5.1
   what3words: ^3.1.0
+  flutter_screenutil: ^5.6.0
+  get: ^4.6.5
 
 dependency_overrides:
   firebase_chat: ^0.0.6+1
