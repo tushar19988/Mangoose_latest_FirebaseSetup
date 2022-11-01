@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "904990994273",
+    "project_id": "mangoo-updated",
+    "storage_bucket": "mangoo-updated.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:904990994273:android:7d1d68a938316a8d681f20",
+        "android_client_info": {
+          "package_name": "com.mangoomarket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "904990994273-bk5k5qhb6jr6fl60d161m6gl55vhsjds.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mangoomarket",
+            "certificate_hash": "4d2bb1c9a09e4df44a9fd555b5c644d4da8236c4"
+          }
+        },
+        {
+          "client_id": "904990994273-8ve8pieph0ckqc2p3lhspqiar565eqtc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCubmedCrxIciJgJgw8Xbcw_teSDP8iDUk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "904990994273-8ve8pieph0ckqc2p3lhspqiar565eqtc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
