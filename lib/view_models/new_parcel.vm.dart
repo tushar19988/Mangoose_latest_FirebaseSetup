@@ -633,6 +633,7 @@ class NewParcelViewModel extends PaymentViewModel {
             allStops[i].deliveryAddress = DeliveryAddress.fromJson(
               (apiResposne.body as Map)["data"],
             );
+            print("useridres ${apiResposne.body}");
           } else {
             toastError("${apiResposne.message}");
           }

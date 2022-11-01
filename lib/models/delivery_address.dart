@@ -20,7 +20,7 @@ class DeliveryAddress {
     this.latitude,
     this.longitude,
     this.isDefault,
-    this.userId,
+    this.userId ,
     this.createdAt,
     this.updatedAt,
     this.formattedDate,
