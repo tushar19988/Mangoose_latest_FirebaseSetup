@@ -5,9 +5,6 @@ import 'package:fuodz/constants/app_colors.dart';
 import 'package:fuodz/view_models/onboarding.vm.dart';
 import 'package:fuodz/widgets/base.page.dart';
 import 'package:fuodz/widgets/busy_indicator.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:stacked/stacked.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -28,30 +25,47 @@ class _OnboardingPageState extends State<OnboardingPage> {
         viewModelBuilder: () => OnboardingViewModel(context, finishLoading),
         onModelReady: (vm) => vm.initialise(),
         builder: (context, vm, child) {
-          return VStack(
-            [
-
-              Visibility(
-                visible: vm.isBusy,
-                child: BusyIndicator().centered().expand(),
+          return Scaffold(
+            backgroundColor: color,
+            body: SafeArea(
+              child: VStack(
+                [
+                  Stack(
+                    children: [
+                      Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'Instacart',
+                          style: TextStyle(
+                            fontSize: 24.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Visibility(
+                    visible: vm.isBusy,
+                    child: BusyIndicator().centered().expand(),
+                  ),
+                  Visibility(
+                    visible: !vm.isBusy,
+                    child: OverBoard(
+                      pages: vm.onBoardData,
+                      showBullets: true,
+                      skipText: "Skip",
+                      nextText: "Next",
+                      finishText: "Done",
+                      skipCallback: vm.onDonePressed,
+                      finishCallback: vm.onDonePressed,
+                      buttonColor: AppColor.primaryColor,
+                      inactiveBulletColor: Colors.grey,
+                      activeBulletColor: AppColor.primaryColorDark,
+                    ).expand(),
+                  ),
+                ],
               ),
-              //
-              Visibility(
-                visible: !vm.isBusy,
-                child: OverBoard(
-                  pages: vm.onBoardData,
-                  showBullets: true,
-                  skipText: "Skip",
-                  nextText: "Next",
-                  finishText: "Done",
-                  skipCallback: vm.onDonePressed,
-                  finishCallback: vm.onDonePressed,
-                  buttonColor: AppColor.primaryColor,
-                  inactiveBulletColor: Colors.grey,
-                  activeBulletColor: AppColor.primaryColorDark,
-                ).expand(),
-              ),
-            ],
+            ),
           );
         },
       ),

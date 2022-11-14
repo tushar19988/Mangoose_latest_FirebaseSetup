@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
-import 'package:fuodz/constants/app_colors.dart';
 import 'package:fuodz/extensions/string.dart';
 import 'package:fuodz/models/product.dart';
 import 'package:fuodz/constants/app_strings.dart';
-import 'package:fuodz/utils/ui_spacer.dart';
-import 'package:fuodz/widgets/buttons/custom_steppr.view.dart';
 import 'package:fuodz/widgets/cards/custom.visibility.dart';
 import 'package:fuodz/widgets/custom_image.view.dart';
 import 'package:fuodz/widgets/inputs/drop_down.input.dart';
-import 'package:fuodz/widgets/states/product_stock.dart';
 import 'package:fuodz/widgets/tags/discount.positioned.dart';
-import 'package:fuodz/widgets/tags/fav.positioned.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class GroceryProductListItem extends StatefulWidget {
@@ -58,7 +52,7 @@ class _GroceryProductListItemState extends State<GroceryProductListItem> {
             DiscountPositiedView(widget.product),
 
             //fav icon
-            FavPositiedView(widget.product),
+            // FavPositiedView(widget.product),
           ],
         ),
 
@@ -103,75 +97,75 @@ class _GroceryProductListItemState extends State<GroceryProductListItem> {
           ],
         ).p8().expand(),
 
-        VStack(
-          [
-            //
-            CustomVisibilty(
-              visible: widget.product.hasStock,
-              child: HStack(
-                [
-                  //price
-                  "${AppStrings.currencySymbol} ${widget.product.sellPrice}"
-                      .currencyFormat()
-                      .text
-                      .base
-                      .bold
-                      .make()
-                      .expand(),
-                  UiSpacer.smHorizontalSpace(),
-                  //counter input
-                  CustomVisibilty(
-                    visible: widget.product.selectedQty != null &&
-                        widget.product.selectedQty >= 1,
-                    child: CustomStepper(
-                      defaultValue: widget.product.selectedQty ?? 0,
-                      max: widget.product.availableQty ?? 20,
-                      onChange: (qty) {
-                        //
-                        updateProductQty(value: qty);
-                      },
-                    ),
-                  ),
-                  //add to cart icon
-                  //hide when selected qty is more than 0
-                  CustomVisibilty(
-                    visible: widget.product.selectedQty == null ||
-                        widget.product.selectedQty < 1,
-                    child: Icon(
-                      FlutterIcons.plus_ant,
-                      size: 20,
-                    )
-                        .box
-                        .p4
-                        .color(context.backgroundColor)
-                        .outerShadowSm
-                        .roundedFull
-                        .make()
-                        .onInkTap(
-                      () {
-                        //
-                        updateProductQty();
-                      },
-                    ),
-                  ),
-                ],
-              ).p8(),
-            ),
-
-            //no stock indicator
-            CustomVisibilty(
-              visible: !widget.product.hasStock,
-              child: ProductStockState(widget.product),
-            ),
-          ],
-        ).box.color(AppColor.faintBgColor).make().p2(),
+        // VStack(
+        //   [
+        //     //
+        //     CustomVisibilty(
+        //       visible: widget.product.hasStock,
+        //       child: HStack(
+        //         [
+        //           //price
+        //           "${AppStrings.currencySymbol} ${widget.product.sellPrice}"
+        //               .currencyFormat()
+        //               .text
+        //               .base
+        //               .bold
+        //               .make()
+        //               .expand(),
+        //           UiSpacer.smHorizontalSpace(),
+        //           //counter input
+        //           CustomVisibilty(
+        //             visible: widget.product.selectedQty != null &&
+        //                 widget.product.selectedQty >= 1,
+        //             child: CustomStepper(
+        //               defaultValue: widget.product.selectedQty ?? 0,
+        //               max: widget.product.availableQty ?? 20,
+        //               onChange: (qty) {
+        //                 //
+        //                 updateProductQty(value: qty);
+        //               },
+        //             ),
+        //           ),
+        //           //add to cart icon
+        //           //hide when selected qty is more than 0
+        //           CustomVisibilty(
+        //             visible: widget.product.selectedQty == null ||
+        //                 widget.product.selectedQty < 1,
+        //             child: Icon(
+        //               FlutterIcons.plus_ant,
+        //               size: 20,
+        //             )
+        //                 .box
+        //                 .p4
+        //                 .color(context.backgroundColor)
+        //                 .outerShadowSm
+        //                 .roundedFull
+        //                 .make()
+        //                 .onInkTap(
+        //               () {
+        //                 //
+        //                 updateProductQty();
+        //               },
+        //             ),
+        //           ),
+        //         ],
+        //       ).p8(),
+        //     ),
+        //
+        //     //no stock indicator
+        //     CustomVisibilty(
+        //       visible: !widget.product.hasStock,
+        //       child: ProductStockState(widget.product),
+        //     ),
+        //   ],
+        // ).box.color(AppColor.faintBgColor).make().p2(),
       ],
     )
         .h(widget.height != null
             ? widget.height
             : widget.product.optionGroups.firstOrNull() != null
-                ? 220
-                : 180)
+                ? 160
+                : 130)
         .onInkTap(
           () => this.widget.onPressed(this.widget.product),
         )

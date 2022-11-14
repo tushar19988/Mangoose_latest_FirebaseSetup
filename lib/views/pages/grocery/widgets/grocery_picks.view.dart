@@ -21,7 +21,7 @@ class GroceryProductsSectionView extends StatelessWidget {
     this.type = ProductFetchDataType.RANDOM,
     this.category,
     this.showGrid = true,
-    this.crossAxisCount = 2,
+    this.crossAxisCount = 3,
     Key key,
   }) : super(key: key);
 
@@ -78,7 +78,7 @@ class GroceryProductsSectionView extends StatelessWidget {
                 ],
               ).p12(),
               CustomVisibilty(
-                visible: !showGrid,
+                visible: showGrid,
                 child: CustomListView(
                   isLoading: vm.isBusy,
                   dataSet: vm.products,
@@ -91,15 +91,15 @@ class GroceryProductsSectionView extends StatelessWidget {
                       qtyUpdated: vm.addToCartDirectly,
                     );
                   },
-                ).h(vm.anyProductWithOptions ? 220 : 180),
+                ).h(vm.anyProductWithOptions ? 160 : 130),
               ),
               CustomVisibilty(
-                visible: showGrid,
+                visible: !showGrid,
                 child: CustomMasonryGridView(
                   isLoading: vm.isBusy,
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
-                  crossAxisCount: crossAxisCount ?? 2,
+                  crossAxisCount: crossAxisCount ?? 3,
                   items: vm.products
                       .map(
                         (product) => GroceryProductListItem(

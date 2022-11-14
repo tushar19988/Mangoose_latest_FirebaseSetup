@@ -113,11 +113,12 @@ class ProfileCard extends StatelessWidget {
                     ic: AppIcons.homeAddress,
                   ),
                   //favourites
-                  MenuItem(
-                    title: "Favourites".tr(),
-                    onPressed: model.openFavourites,
-                    ic: AppIcons.favourite,
-                  ),
+                  /// Favourites Hide
+                  // MenuItem(
+                  //   title: "Favourites".tr(),
+                  //   onPressed: model.openFavourites,
+                  //   ic: AppIcons.favourite,
+                  // ),
                   //
                   MenuItem(
                     child: "Logout".tr().text.red500.make(),

@@ -12,7 +12,7 @@ class AppStrings {
   static String get currencySymbol => env('currency');
   static String get countryCode => env('country_code');
   static bool get enableOtp => env('enble_otp') == "1";
-  static bool get enableOTPLogin => env('enableOTPLogin') == "1";
+  static bool get enableOTPLogin => env('enableOTPLogin') == "0";
   static bool get enableGoogleDistance => env('enableGoogleDistance') == "1";
   static bool get enableSingleVendor => env('enableSingleVendor') == "1";
   static bool get enableMultipleVendorOrder =>

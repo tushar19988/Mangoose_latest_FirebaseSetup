@@ -4,6 +4,8 @@ import 'package:fuodz/constants/app_colors.dart';
 import 'package:fuodz/utils/ui_spacer.dart';
 import 'package:fuodz/views/shared/go_to_cart.view.dart';
 import 'package:fuodz/widgets/cart_page_action.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:measure_size/measure_size.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -14,6 +16,7 @@ class BasePage extends StatefulWidget {
   final bool extendBodyBehindAppBar;
   final Function onBackPressed;
   final bool showCart;
+  final bool showtoggle;
   final String title;
   final List<Widget> actions;
   final Widget leading;
@@ -34,6 +37,7 @@ class BasePage extends StatefulWidget {
     this.showLeadingAction = false,
     this.onBackPressed,
     this.showCart = false,
+    this.showtoggle = false,
     this.title = "",
     this.actions,
     this.body,
@@ -61,6 +65,7 @@ class _BasePageState extends State<BasePage> {
   //
   @override
   Widget build(BuildContext context) {
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
     return Directionality(
       textDirection: translator.activeLocale.languageCode == "ar"
           ? TextDirection.rtl
@@ -89,7 +94,7 @@ class _BasePageState extends State<BasePage> {
                             ),
                             onPressed: widget.onBackPressed != null
                                 ? widget.onBackPressed
-                                : () => Navigator.pop(context),
+                                : () => Get.back(),
                           )
                         : widget.leading
                     : null,
@@ -103,6 +108,24 @@ class _BasePageState extends State<BasePage> {
                       widget.showCart
                           ? PageCartAction()
                           : UiSpacer.emptySpace(),
+                      widget.showtoggle ?
+                      Switch(
+                        activeThumbImage: AssetImage('assets/images/toggle_off.png'),
+                          inactiveThumbImage: AssetImage('assets/images/toggle_on.png'),
+                          // activeThumbImage: new NetworkImage(
+                          //   'https://lists.gnu.org/archive/html/emacs-devel/2015-10/pngR9b4lzUy39.png',
+                          // ),
+                          // inactiveThumbImage: new NetworkImage(
+                          //   'http://wolfrosch.com/_img/works/goodies/icon/vim@2x',
+                          // ),
+                          value: isDarkMode,
+                          onChanged: (onChanged) {
+                            if (isDarkMode) {
+                              Get.changeThemeMode(ThemeMode.light);
+                            } else {
+                              Get.changeThemeMode(ThemeMode.dark);
+                            }
+                          }):UiSpacer.emptySpace(),
                     ],
               )
             : null,

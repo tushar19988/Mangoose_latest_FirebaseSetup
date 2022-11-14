@@ -10,7 +10,6 @@ import 'package:fuodz/views/pages/product/widgets/product_option_group.dart';
 import 'package:fuodz/views/pages/product/widgets/product_options.header.dart';
 import 'package:fuodz/widgets/base.page.dart';
 import 'package:fuodz/widgets/busy_indicator.dart';
-import 'package:fuodz/widgets/buttons/share.btn.dart';
 import 'package:fuodz/widgets/cart_page_action.dart';
 import 'package:fuodz/widgets/custom_image.view.dart';
 import 'package:fuodz/widgets/html_text_view.dart';
@@ -40,16 +39,17 @@ class ProductDetailsPage extends StatelessWidget {
           appBarItemColor: AppColor.primaryColor,
           showCart: true,
           actions: [
-            SizedBox(
-              width: 50,
-              height: 50,
-              child: FittedBox(
-                child: ShareButton(
-                  model: model,
-                ),
-              ),
-            ),
-            UiSpacer.hSpace(10),
+            /// Hide ShareButton
+            // SizedBox(
+            //   width: 50,
+            //   height: 50,
+            //   child: FittedBox(
+            //     child: ShareButton(
+            //       model: model,
+            //     ),
+            //   ),
+            // ),
+            // UiSpacer.hSpace(10),
             PageCartAction(),
           ],
           body: CustomScrollView(

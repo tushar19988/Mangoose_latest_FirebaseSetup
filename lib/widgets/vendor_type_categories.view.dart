@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fuodz/constants/app_colors.dart';
-import 'package:fuodz/constants/app_strings.dart';
 import 'package:fuodz/models/vendor_type.dart';
 import 'package:fuodz/utils/ui_spacer.dart';
 import 'package:fuodz/view_models/vendor/categories.vm.dart';
 import 'package:fuodz/views/pages/category/categories.page.dart';
-import 'package:fuodz/widgets/custom_dynamic_grid_view.dart';
 import 'package:fuodz/widgets/list_items/category.list_item.dart';
 import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:stacked/stacked.dart';
@@ -62,7 +61,7 @@ class _VendorTypeCategoriesState extends State<VendorTypeCategories> {
                         : UiSpacer.emptySpace(),
                     (widget.description != null
                             ? widget.description
-                            : "How can we help?")
+                            : "Categories")
                         .tr()
                         .text
                         .xl
@@ -87,21 +86,42 @@ class _VendorTypeCategoriesState extends State<VendorTypeCategories> {
             ).p12(),
 
             //categories list
-            CustomDynamicHeightGridView(
-              crossAxisCount: AppStrings.categoryPerRow,
-              itemCount: model.categories.length,
-              mainAxisSpacing: 0,
-              crossAxisSpacing: 0,
-              isLoading: model.isBusy,
-              noScrollPhysics: true,
-              itemBuilder: (ctx, index) {
-                return CategoryListItem(
-                  category: model.categories[index],
-                  onPressed: model.categorySelected,
-                  maxLine: false,
-                );
-              },
-            ),
+            /// Latest Code Gridview Client Require Listview
+            // CustomDynamicHeightGridView(
+            //   crossAxisCount: AppStrings.categoryPerRow,
+            //   itemCount: model.categories.length,
+            //   mainAxisSpacing: 0,
+            //   crossAxisSpacing: 0,
+            //   isLoading: model.isBusy,
+            //   noScrollPhysics: true,
+            //   itemBuilder: (ctx, index) {
+            //     return CategoryListItem(
+            //       category: model.categories[index],
+            //       onPressed: model.categorySelected,
+            //       maxLine: false,
+            //     );
+            //   },
+            // ),
+            /// Listview horizontal
+
+            Container(
+              height: 140.h,
+              child: ListView.builder(
+                itemCount: model.categories.length,
+                // shrinkWrap: true,
+                physics: BouncingScrollPhysics(),
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  return CategoryListItem(
+                    category: model.categories[index],
+                    onPressed: model.categorySelected,
+                    maxLine: false,
+                  );
+                },
+              ),
+            )
+
+
             // CustomGridView(
             //   // scrollDirection: Axis.horizontal,
             //   noScrollPhysics: true,

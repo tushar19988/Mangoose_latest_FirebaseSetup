@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:fuodz/constants/app_images.dart';
 import 'package:fuodz/view_models/splash.vm.dart';
 import 'package:fuodz/widgets/base.page.dart';
-import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:stacked/stacked.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -12,6 +10,7 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BasePage(
+      backgroundColor: Color(0xff008000),
       body: ViewModelBuilder<SplashViewModel>.reactive(
         viewModelBuilder: () => SplashViewModel(context),
         onModelReady: (vm) => vm.initialise(),
@@ -19,14 +18,14 @@ class SplashPage extends StatelessWidget {
           return VStack(
             [
               //
-              Image.asset(AppImages.appLogo)
-                  .wh(context.percentWidth * 45, context.percentWidth * 45)
+              Image.asset("assets/images/splash_icon.png")
+                  .wh(context.percentWidth * 35, context.percentWidth * 35)
                   .box
                   .clip(Clip.antiAlias)
                   .roundedSM
                   .makeCentered()
                   .py12(),
-              "Loading Please wait...".tr().text.makeCentered(),
+              // "Loading Please wait...".tr().text.makeCentered(),
             ],
           ).centered();
         },

@@ -24,7 +24,7 @@ class SearchViewModel extends MyBaseViewModel {
   Category category;
   Search search;
   int selectTagId = 2;
-  bool showGrid = false;
+  bool showGrid = true;
   //
   int queryPage = 1;
   List<dynamic> searchResults = [];

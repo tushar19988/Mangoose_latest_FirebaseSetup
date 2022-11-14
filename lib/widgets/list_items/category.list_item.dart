@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fuodz/constants/app_strings.dart';
 import 'package:fuodz/models/category.dart';
 import 'package:fuodz/widgets/cards/custom.visibility.dart';
@@ -68,8 +69,10 @@ class CategoryListItem extends StatelessWidget {
               CustomImage(
                 imageUrl: category.imageUrl,
                 boxFit: BoxFit.fill,
-                width: AppStrings.categoryImageWidth,
-                height: AppStrings.categoryImageHeight,
+                width: 80.h,
+                height: 80.h,
+                // width: AppStrings.categoryImageWidth,
+                // height: AppStrings.categoryImageHeight,
               )
                   .box
                   .roundedSM

@@ -50,11 +50,12 @@ class _ProfilePageState extends State<ProfilePage>
                     ),
 
                     //
-                    MenuItem(
-                      title: "Rate & Review".tr(),
-                      onPressed: model.openReviewApp,
-                      ic: AppIcons.rating,
-                    ),
+                    /// Rate & Review Hide
+                    // MenuItem(
+                    //   title: "Rate & Review".tr(),
+                    //   onPressed: model.openReviewApp,
+                    //   ic: AppIcons.rating,
+                    // ),
 
                     //
                     MenuItem(
@@ -75,11 +76,12 @@ class _ProfilePageState extends State<ProfilePage>
                       ic: AppIcons.communicate,
                     ),
                     //
-                    MenuItem(
-                      title: "Live Support".tr(),
-                      onPressed: model.openLivesupport,
-                      ic: AppIcons.livesupport,
-                    ),
+                    /// Live Support Hide
+                    // MenuItem(
+                    //   title: "Live Support".tr(),
+                    //   onPressed: model.openLivesupport,
+                    //   ic: AppIcons.livesupport,
+                    // ),
                     //
                     MenuItem(
                       title: "Language".tr(),

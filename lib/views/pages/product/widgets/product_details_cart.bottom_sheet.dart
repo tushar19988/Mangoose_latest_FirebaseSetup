@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fuodz/extensions/string.dart';
 import 'package:fuodz/view_models/product_details.vm.dart';
 import 'package:fuodz/widgets/buttons/custom_button.dart';
@@ -16,26 +16,26 @@ class ProductDetailsCartBottomSheet extends StatelessWidget {
     return VStack(
       [
         //
-        Visibility(
-          visible: model.product.hasStock,
-          child: HStack(
-            [
-              //
-              "Quantity".tr().text.xl.medium.make().expand(),
-              //
-              VxStepper(
-                defaultValue: model.product.selectedQty ?? 1,
-                min: 1,
-                max: (model.product.availableQty != null &&
-                        model.product.availableQty > 0)
-                    ? model.product.availableQty
-                    : 20,
-                disableInput: true,
-                onChange: model.updatedSelectedQty,
-              ),
-            ],
-          ),
-        ),
+        // Visibility(
+        //   visible: model.product.hasStock,
+        //   child: HStack(
+        //     [
+        //       //
+        //       "Quantity".tr().text.xl.medium.make().expand(),
+        //       //
+        //       VxStepper(
+        //         defaultValue: model.product.selectedQty ?? 1,
+        //         min: 1,
+        //         max: (model.product.availableQty != null &&
+        //                 model.product.availableQty > 0)
+        //             ? model.product.availableQty
+        //             : 20,
+        //         disableInput: true,
+        //         onChange: model.updatedSelectedQty,
+        //       ),
+        //     ],
+        //   ),
+        // ),
 
         //
         Visibility(
@@ -43,18 +43,33 @@ class ProductDetailsCartBottomSheet extends StatelessWidget {
           child: HStack(
             [
               //
-              CustomButton(
-                loading: model.isBusy,
-                child: Icon(
-                  FlutterIcons.heart_fea,
-                  color: Colors.white,
-                ),
-                onPressed: !model.isAuthenticated()
-                    ? model.openLogin
-                    : !model.product.isFavourite
-                        ? model.addToFavourite
-                        : null,
-              ).w(Vx.dp64).pOnly(right: Vx.dp24),
+              VxStepper(
+                defaultValue: model.product.selectedQty ?? 1,
+                min: 1,
+                max: (model.product.availableQty != null &&
+                    model.product.availableQty > 0)
+                    ? model.product.availableQty
+                    : 20,
+                disableInput: true,
+                onChange: model.updatedSelectedQty,
+              ),
+              /// Add To Favorite Button Hide
+              // CustomButton(
+              //   loading: model.isBusy,
+              //   child: Icon(
+              //     FlutterIcons.heart_fea,
+              //     color: Colors.white,
+              //   ),
+              //   onPressed: !model.isAuthenticated()
+              //       ? model.openLogin
+              //       : !model.product.isFavourite
+              //           ? model.addToFavourite
+              //           : null,
+              // ).w(Vx.dp64).pOnly(right: Vx.dp24),
+              SizedBox(
+                width: 30.w,
+              ),
+              /// Add To Cart Button
               //
               CustomButton(
                 loading: model.isBusy,

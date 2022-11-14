@@ -13,7 +13,6 @@ import 'package:fuodz/views/pages/vendor/widgets/header.view.dart';
 import 'package:fuodz/views/pages/vendor/widgets/nearby_vendors.view.dart';
 import 'package:fuodz/widgets/base.page.dart';
 import 'package:fuodz/widgets/cards/view_all_vendors.view.dart';
-import 'package:localize_and_translate/localize_and_translate.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 import 'package:stacked/stacked.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -39,7 +38,8 @@ class _GroceryPageState extends State<GroceryPage>
       title: "${widget.vendorType.name}",
       appBarColor: context.theme.backgroundColor,
       appBarItemColor: AppColor.primaryColor,
-      showCart: true,
+      showCart: false,
+      showtoggle: true,
       key: pageKey,
       body: ViewModelBuilder<GroceryViewModel>.reactive(
         viewModelBuilder: () => GroceryViewModel(context, widget.vendorType),
@@ -75,7 +75,7 @@ class _GroceryPageState extends State<GroceryPage>
 
                     //today picks
                     GroceryProductsSectionView(
-                      "Today Picks".tr() + " 🔥",
+                      "Popular",
                       model.vendorType,
                       showGrid: false,
                       type: ProductFetchDataType.RANDOM,
